@@ -1,1 +1,10 @@
-<p>lista-cavalete works!</p>
+<h2>Listagem de Cavaletes</h2>
+
+<p><i>Pick a cavalete from the list</i></p>
+<ul>
+  <li *ngFor="let cavalete of cavaletes" (click)="selectCavalete(cavalete)">
+    {{cavalete.tipocavalete}}
+  </li>
+</ul>
+
+<!--<app-hero-detail *ngIf="selectedCavalete" [cavalete]="selectedCavalete"></app-hero-detail>-->
