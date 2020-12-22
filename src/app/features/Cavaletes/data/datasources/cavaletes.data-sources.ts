@@ -26,7 +26,35 @@ const CAVALETES = [
 
     new Cavalete({
         id: 4,
+        tipocavalete: 'Bronze',
+        datacadastro: new Date(),
+        dataatualizacao: new Date()
+    }),
+
+    new Cavalete({
+        id: 5,
         tipocavalete: 'PVC',
+        datacadastro: new Date(),
+        dataatualizacao: new Date()
+    }),
+
+    new Cavalete({
+        id: 6,
+        tipocavalete: 'Madeira',
+        datacadastro: new Date(),
+        dataatualizacao: new Date()
+    }),
+
+    new Cavalete({
+        id: 7,
+        tipocavalete: 'Ferro Fundido',
+        datacadastro: new Date(),
+        dataatualizacao: new Date()
+    }),
+
+    new Cavalete({
+        id: 8,
+        tipocavalete: 'Liga de Aluminio',
         datacadastro: new Date(),
         dataatualizacao: new Date()
     }),
@@ -52,7 +80,7 @@ export class CavaletesDataSourceImpl extends CavaleteDataSource {
             setTimeout(() => {
                 subscriber.next({ cavaletes: CAVALETES });
                 subscriber.complete();
-            }, 3000);
+            }, 1000);
         });
     }
 }

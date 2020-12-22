@@ -1,0 +1,64 @@
+.container{
+    padding: 10px;
+}
+
+.mat-form-field {
+    padding: 5px;
+    line-height: 1.75;
+}
+
+input[type]:not(.browser-default) {
+    height: 1.5rem;
+    border-bottom: 0;
+    margin: 0;
+}
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+th.mat-header-cell.th-center,
+td.td-center{
+    text-align: center;
+}
+
+input:not([type]){
+    height: 1.5rem;
+    border-bottom: 0;
+    margin: 0;
+}
+
+input:not([type]):focus:not([readonly]) {
+    border-bottom:none;
+    box-shadow:none
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border-bottom:none;
+    box-shadow:none
+}
+
+input[type=email]:not(.browser-default):focus:not([readonly]){
+    border-bottom:none;
+    box-shadow:none
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    padding: 0 !important;
+    margin: 0;
+    background-color: #fff !important;
+} 
+
+.mat-form-field.mat-accent .mat-input-element{
+    caret-color: #673ab7 !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label.mat-accent{
+    color: #673ab7 !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple.mat-accent{
+    background-color: #673ab7 !important;
+}
+
+table {
+    width: 100%;
+  }

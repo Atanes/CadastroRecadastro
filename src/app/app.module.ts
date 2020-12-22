@@ -14,6 +14,11 @@ import { CavaletesRepository } from './features/Cavaletes/domain/repositories/ca
 import { CavaleteDataSource, CavaletesDataSourceImpl } from './features/Cavaletes/data/datasources/cavaletes.data-sources';
 import { CavaleteService } from './features/Cavaletes/cavalete.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { PaginatorBR } from './utils/paginatorBR';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,15 +29,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
     NgxsModule.forRoot([CavaletesState], {
       developmentMode: !environment.production
     }),
-    BrowserAnimationsModule
+
   ],
   providers: [
     CavaleteService,
     { provide: CavaletesRepository, useClass: CavaletesRepositoryImpl},
     { provide: CavaleteDataSource, useClass: CavaletesDataSourceImpl},
+    MaterialModule, { provide: MatPaginatorIntl, useClass: PaginatorBR}
   ],
   bootstrap: [AppComponent]
 })

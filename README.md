@@ -19,6 +19,9 @@ _Command to install:_ npm install @ngxs/store --save
 **Angular Material** Material Design components for Angular
 _Command to install:_ ng add @angular/material
 
+**Angular Flex-Layout** provides a sophisticated layout API using Flexbox CSS + mediaQuery. This module provides Angular developers with component layout features using a custom Layout API, mediaQuery observables, and injected DOM flexbox-2016 CSS stylings.
+_Command to install:_ npm i -s @angular/flex-layout @angular/cdk
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
