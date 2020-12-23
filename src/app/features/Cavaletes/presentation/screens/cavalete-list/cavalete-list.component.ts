@@ -1,3 +1,4 @@
+import { Cavalete } from './../../../data/models/cavalete';
 import { FetchCavaletes, SetCavalete } from './../../store/cavalete.actions';
 import { ICavaleteEntity } from './../../../domain/entities/cavalete.entity';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -10,6 +11,7 @@ import { Store } from '@ngxs/store';
 import { CavaletesState } from '../../store/cavalete.states';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CavaleteFormComponent } from '../cavalete-form/cavalete-form.component';
+import { CavaleteService } from '../../../cavalete.service';
 
 @Component({
   selector: 'cad-rec-app-cavalete-list',
@@ -40,7 +42,7 @@ export class CavaleteListComponent implements OnInit {
 
 
   constructor(
-    //private service: CavaleteService,
+    private service: CavaleteService,
     public matDialog: MatDialog,
     private _store: Store,
   ) { }
@@ -50,10 +52,16 @@ export class CavaleteListComponent implements OnInit {
     // The user can't close the dialog by clicking outside its body
     dialogConfig.disableClose = true;
     dialogConfig.id = "modal-component";
-    dialogConfig.height = "600px";
-    dialogConfig.width = "800px";
+    dialogConfig.height = "200px";
+    dialogConfig.width = "300px";
+    dialogConfig.panelClass = "form-cavalete-class"
+    dialogConfig.data = this.selectedCavalete === undefined ? new Cavalete('') : this.selectedCavalete;
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(CavaleteFormComponent, dialogConfig);
+    modalDialog.afterClosed().subscribe(data => {
+      console.log(`Dialog sent:`, data);
+      this.salvaCavalete(data);
+    });
   }
 
   ngOnInit() {
@@ -80,6 +88,32 @@ export class CavaleteListComponent implements OnInit {
       this.dataSource.sort = this.sort;
 
     });
+
+  }
+
+  carregaCavaletes(){
+    this.service.getCavaletes().subscribe( result => {
+      console.log(result);
+      this.cavaletes = result.cavaletes;
+    });
+  }
+
+  salvaCavalete(cavalete: ICavaleteEntity){
+    const data = [...this.dataSource.data];
+    let novoID = data.length;
+    if(cavalete.id === 0){
+      cavalete.id = ++novoID;
+      cavalete.dataatualizacao = new Date();
+      cavalete.datacadastro = new Date();
+      data.push(cavalete);
+
+      this.dataSource = new MatTableDataSource<ICavaleteEntity>(data);
+
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+      this.carregaCavaletes();
+    }
 
   }
 

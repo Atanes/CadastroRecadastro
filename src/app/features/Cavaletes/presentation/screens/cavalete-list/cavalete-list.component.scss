@@ -13,13 +13,6 @@ input[type]:not(.browser-default) {
     margin: 0;
 }
 
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
-th.mat-header-cell.th-center,
-td.td-center{
-    text-align: center;
-}
-
 input:not([type]){
     height: 1.5rem;
     border-bottom: 0;
@@ -41,24 +34,27 @@ input[type=email]:not(.browser-default):focus:not([readonly]){
     box-shadow:none
 }
 
-.mat-form-field-appearance-fill .mat-form-field-flex {
-    padding: 0 !important;
-    margin: 0;
-    background-color: #fff !important;
-} 
-
-.mat-form-field.mat-accent .mat-input-element{
-    caret-color: #673ab7 !important;
-}
-
-.mat-form-field.mat-focused .mat-form-field-label.mat-accent{
-    color: #673ab7 !important;
-}
-
-.mat-form-field.mat-focused .mat-form-field-ripple.mat-accent{
-    background-color: #673ab7 !important;
-}
-
 table {
     width: 100%;
-  }
+}
+
+th.mat-header-cell.th-center,
+td.td-center{
+    text-align: center;
+}
+
+th.mat-header-cell,
+td.mat-footer-cell{
+    background-color: #424242;
+    color: white;
+}
+
+.mat-paginator{
+    background-color: #c0c0c0;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  border-bottom-width: 1px;  
+}

@@ -12,9 +12,9 @@ import { ICavaleteEntity } from "../../domain/entities/cavalete.entity";
   
     constructor(cavalete: any
       ) {
-        this.id = nextId++;
+        this.id = (cavalete && cavalete.id) || 0;
         this.tipocavalete = (cavalete && cavalete.tipocavalete) || null;
-        this.datacadastro = new Date() || null;
-        this.dataatualizacao = new Date() || null;
+        this.datacadastro = (cavalete && cavalete.datacadastro) || new Date();
+        this.dataatualizacao = (cavalete && cavalete.dataatualizacao) || new Date();
       }
   }
