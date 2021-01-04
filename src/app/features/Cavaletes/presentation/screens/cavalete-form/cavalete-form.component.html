@@ -21,7 +21,7 @@
 
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-button [mat-dialog-close]="true" (click)="close()">Cancelar</button>
         <button mat-raised-button [mat-dialog-close]="true" (click)="save()"
             [disabled]="!cavaleteForm.valid">Salvar</button>
     </mat-dialog-actions>

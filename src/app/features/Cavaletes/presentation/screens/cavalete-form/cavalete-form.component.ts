@@ -24,23 +24,24 @@ export class CavaleteFormComponent {
     this.cavalete = data;
     this.createForm();
   }
+
   createForm() {
     this.cavaleteForm = this.fb.group({
       tipocavalete: new FormControl(this.cavalete.tipocavalete, Validators.compose([
         Validators.maxLength(30),
         Validators.required
       ])),
-      id:[this.cavalete.id],
+      id: [this.cavalete.id],
     })
   }
 
   save() {
     this.dialogRef.close(this.cavaleteForm.value);
     console.log(this.cavaleteForm.value);
-}
+  }
 
-close() {
+  close() {
     this.dialogRef.close();
-}
+  }
 
 }

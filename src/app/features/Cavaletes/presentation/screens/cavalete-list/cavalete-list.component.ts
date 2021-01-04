@@ -23,15 +23,6 @@ export class CavaleteListComponent implements OnInit {
   cavaletes: ICavaleteEntity[];
   selectedCavalete: ICavaleteEntity;
 
-  // *** CALL ACTION FetchCavaletes with Dispatch
-  cavaletesStore = this._store.dispatch(FetchCavaletes);
-
-  // *** Create a Store Selector to later subscribe to the Store State
-  cavaleteStoreSelector = this._store.select(CavaletesState.getState);
-
-
-  // Public Variables
-  cavaletesLoading: boolean = false;
 
   displayedColumns: string[] = ['id', 'tipocavalete', 'datacadastro', 'dataatualizacao', 'acoes'];
   dataSource = null;
@@ -44,7 +35,6 @@ export class CavaleteListComponent implements OnInit {
   constructor(
     private service: CavaleteService,
     public matDialog: MatDialog,
-    private _store: Store,
   ) { }
 
   openModal() {
@@ -60,74 +50,64 @@ export class CavaleteListComponent implements OnInit {
     const modalDialog = this.matDialog.open(CavaleteFormComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(data => {
       console.log(`Dialog sent:`, data);
-      this.salvaCavalete(data);
+      if (data !== undefined) {
+        this.salvaCavalete(data);
+      }
+      this.selectedCavalete = undefined;
     });
   }
 
   ngOnInit() {
-    /*
-    this.service.getCavaletes().subscribe( result => {
+
+    this.service.getCavaletes().subscribe(result => {
       console.log(result);
       this.cavaletes = result.cavaletes;
     });
-    */
 
-    // *** Subscribe to LOAD CAVALETES LIST
+    this.dataSource = new MatTableDataSource<ICavaleteEntity>(this.cavaletes);
 
-    this.cavaleteStoreSelector.subscribe((data: any) => {
-
-      console.log("data.loading: ", data.loading);
-
-      this.cavaletesLoading = data.loading;
-
-      this.cavaletes = data.cavaletes;
-
-      this.dataSource = new MatTableDataSource<ICavaleteEntity>(this.cavaletes);
-
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-
-    });
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
 
   }
 
-  carregaCavaletes(){
-    this.service.getCavaletes().subscribe( result => {
+  carregaCavaletes() {
+    this.service.getCavaletes().subscribe(result => {
       console.log(result);
       this.cavaletes = result.cavaletes;
     });
   }
 
-  salvaCavalete(cavalete: ICavaleteEntity){
-    const data = [...this.dataSource.data];
+  salvaCavalete(cavalete: ICavaleteEntity) {
+    const data: ICavaleteEntity[] = [...this.dataSource.data];
     let novoID = data.length;
-    if(cavalete.id === 0){
+    if (cavalete.id === 0) {
       cavalete.id = ++novoID;
       cavalete.dataatualizacao = new Date();
       cavalete.datacadastro = new Date();
       data.push(cavalete);
 
-      this.dataSource = new MatTableDataSource<ICavaleteEntity>(data);
-
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-
-      this.carregaCavaletes();
+    } else {
+      for (let i = 0; i < data.length; i++) {
+        if (cavalete.id === data[i].id) {
+          data[i].tipocavalete = cavalete.tipocavalete;
+          data[i].dataatualizacao = new Date();
+        }
+      }
     }
+
+    this.dataSource = new MatTableDataSource<ICavaleteEntity>(data);
+
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    this.carregaCavaletes();
 
   }
 
   selectCavalete(cavalete: ICavaleteEntity): void {
     this.selectedCavalete = cavalete;
-  }
-
-  /**
-   * On cavalete selected
-   *
-   * @param cavalete
-   */
-  onCavaleteSelected(cavalete: ICavaleteEntity): void {
-    this._store.dispatch(new SetCavalete(cavalete));
+    this.openModal();
   }
 
   ngAfterViewInit() {
