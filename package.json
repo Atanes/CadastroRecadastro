@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --output-hashing=none",
+    "package": "cat dist/cliente-componente/{runtime,polyfills,scripts,main}.js | gzip > cliente-element.js.gz",
+    "serve": "npx http-server ./dist/cliente-componente",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -15,10 +17,12 @@
     "@angular/common": "~11.0.1",
     "@angular/compiler": "~11.0.1",
     "@angular/core": "~11.0.1",
+    "@angular/elements": "^11.0.5",
     "@angular/forms": "~11.0.1",
     "@angular/platform-browser": "~11.0.1",
     "@angular/platform-browser-dynamic": "~11.0.1",
     "@angular/router": "~11.0.1",
+    "document-register-element": "^1.7.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
