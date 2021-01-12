@@ -208,7 +208,7 @@ Assim como sugere o nome, as **diretivas estruturais** modificam a estrutura do 
 </ul>
 ```
 
-O **\*ngIf** irá mostrar a lista somente se o número de clientes for maior que 0, já o **\*ngFor** irá criar um <li> para cada cliente.
+O **\*ngIf** irá mostrar a lista somente se o número de clientes for maior que 0, já o **\*ngFor** irá criar um &lt;li&yen; para cada cliente.
 
 ### Diretivas de Atribuição
 
