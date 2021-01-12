@@ -50,10 +50,10 @@
     <ng-container matColumnDef="acoes">
       <th class="th-center" mat-header-cell *matHeaderCellDef>Ações</th>
       <td class="td-center" mat-cell *matCellDef="let element">
-        <span class="material-icons botaoEdicaoListas" (click)="selectCavalete(element)">
+        <span class="material-icons botaoEdicaoListas" (click)="selecionaCavalete(element)">
           create
         </span>
-        <span class="material-icons botaoExclusaoListas" (click)="selectCavalete(element)">
+        <span class="material-icons botaoExclusaoListas" (click)="excluiCavalete(element)">
           delete_sweep
         </span>
       </td>

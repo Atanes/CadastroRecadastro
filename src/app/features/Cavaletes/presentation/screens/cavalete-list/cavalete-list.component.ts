@@ -102,10 +102,24 @@ export class CavaleteListComponent implements OnInit {
 
   }
 
-  selectCavalete(cavalete: ICavaleteEntity): void {
+  selecionaCavalete(cavalete: ICavaleteEntity): void {
     this.selectedCavalete = cavalete;
     this.openModal();
   }
+
+  excluiCavalete(cavalete: ICavaleteEntity) {
+    this.dataSource = new MatTableDataSource<ICavaleteEntity>(
+      this.cavaletes.filter(function (el) {
+        return el.id !== cavalete.id;
+      })
+    );
+
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    this.carregaCavaletes();
+  }
+
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
