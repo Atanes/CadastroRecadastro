@@ -8,7 +8,6 @@ import { IRequest } from './models/request.model';
 
 import { IConfiguration } from '../configuration/models/configuration.model';
 
-import { finalize } from 'rxjs/operators';
 import { IRequestOptions } from './models/request-options.model';
 
 

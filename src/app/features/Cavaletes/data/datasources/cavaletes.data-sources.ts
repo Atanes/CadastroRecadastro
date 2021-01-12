@@ -20,7 +20,7 @@ const CAVALETES = [
     new Cavalete({
         id: 3,
         tipocavalete: 'Aluminio',
-        datacadastro: new Date('05/20/2008'),
+        datacadastro: new Date('07/20/2008'),
         dataatualizacao: new Date('05/20/2008')
     }),
 

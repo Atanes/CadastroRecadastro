@@ -1,5 +1,4 @@
 import { Cavalete } from './../../../data/models/cavalete';
-import { FetchCavaletes, SetCavalete } from './../../store/cavalete.actions';
 import { ICavaleteEntity } from './../../../domain/entities/cavalete.entity';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
@@ -7,14 +6,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Store } from '@ngxs/store';
-import { CavaletesState } from '../../store/cavalete.states';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CavaleteFormComponent } from '../cavalete-form/cavalete-form.component';
 import { CavaleteService } from '../../../cavalete.service';
 
 @Component({
-  selector: 'cad-rec-app-cavalete-list',
+  selector: 'custom-cavalete-listagem',
   templateUrl: './cavalete-list.component.html',
   styleUrls: ['./cavalete-list.component.scss']
 })
