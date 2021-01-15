@@ -7,4 +7,4 @@ app.get('/*', function(req, res) {
   res.sendFile(__dirname + '/dist/cadastro-recadastro/index.html');
 });
 
-app.listen(4100);
+app.listen(process.env.PORT || 4100);
