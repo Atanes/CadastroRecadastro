@@ -1,1 +1,10 @@
-{}
+{
+    "titulo_listagem": "Cadastro de Cavaletes",
+    "tipo": "Tipo de Cavalete",
+    "data_cadastro": "Data de Cadastro",
+    "data_alteracao": "Data de Atualização",
+    "acoes": "Ações",
+    "btn_novo": "Novo",
+    "btn_salvar": "Salvar",
+    "label_novo_tipo_cavalete": "Novo tipo de cavalete"
+}

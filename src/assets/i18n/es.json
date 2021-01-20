@@ -1,1 +1,10 @@
-{}
+{
+    "titulo_listagem": "Registro de Caballetes",
+    "tipo": "Tipo de Caballete",
+    "data_cadastro": "Registro de fecha",
+    "data_alteracao": "Fecha de actualización",
+    "acoes": "Comportamiento",
+    "btn_novo": "Nuevo",
+    "btn_salvar": "Ahorrar",
+    "label_novo_tipo_cavalete": "Nuevo tipo de caballete"
+}

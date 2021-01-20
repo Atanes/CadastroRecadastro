@@ -62,3 +62,21 @@ td.mat-cell,
 td.mat-footer-cell {
   border-bottom-width: 1px;  
 }
+
+.bandeiras{
+    overflow: auto;
+}
+
+.bandeiras img {
+    float: left;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.material-icons {
+    font-size: 16px;
+    display: inline;
+}
+  
+
+

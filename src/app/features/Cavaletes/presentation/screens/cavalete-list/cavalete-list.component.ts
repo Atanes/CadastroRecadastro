@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CavaleteFormComponent } from '../cavalete-form/cavalete-form.component';
 import { CavaleteService } from '../../../cavalete.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'custom-cavalete-listagem',
@@ -24,6 +25,8 @@ export class CavaleteListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'tipocavalete', 'datacadastro', 'dataatualizacao', 'acoes'];
   dataSource = null;
 
+  novoID = 8;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild('input') input!: ElementRef;
@@ -32,7 +35,13 @@ export class CavaleteListComponent implements OnInit {
   constructor(
     private service: CavaleteService,
     public matDialog: MatDialog,
+    private t_service: TranslocoService,
   ) { }
+
+
+  changeSiteLanguage(language: string): void {
+  this.t_service.setActiveLang(language);
+  }
 
   openModal() {
     const dialogConfig = new MatDialogConfig();
@@ -46,7 +55,6 @@ export class CavaleteListComponent implements OnInit {
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(CavaleteFormComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(data => {
-      console.log(`Dialog sent:`, data);
       if (data !== undefined) {
         this.salvaCavalete(data);
       }
@@ -57,7 +65,6 @@ export class CavaleteListComponent implements OnInit {
   ngOnInit() {
 
     this.service.getCavaletes().subscribe(result => {
-      console.log(result);
       this.cavaletes = result.cavaletes;
     });
 
@@ -70,16 +77,14 @@ export class CavaleteListComponent implements OnInit {
 
   carregaCavaletes() {
     this.service.getCavaletes().subscribe(result => {
-      console.log(result);
       this.cavaletes = result.cavaletes;
     });
   }
 
   salvaCavalete(cavalete: ICavaleteEntity) {
     const data: ICavaleteEntity[] = [...this.dataSource.data];
-    let novoID = data.length;
     if (cavalete.id === 0) {
-      cavalete.id = ++novoID;
+      cavalete.id = ++this.novoID;
       cavalete.dataatualizacao = new Date();
       cavalete.datacadastro = new Date();
       data.push(cavalete);
@@ -98,18 +103,19 @@ export class CavaleteListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-    this.carregaCavaletes();
 
   }
 
   selecionaCavalete(cavalete: ICavaleteEntity): void {
     this.selectedCavalete = cavalete;
+    //console.log('Objeto: ', cavalete.getObjectName);
     this.openModal();
   }
 
   excluiCavalete(cavalete: ICavaleteEntity) {
+    const data: ICavaleteEntity[] = [...this.dataSource.data];
     this.dataSource = new MatTableDataSource<ICavaleteEntity>(
-      this.cavaletes.filter(function (el) {
+      data.filter(function (el) {
         return el.id !== cavalete.id;
       })
     );
@@ -119,7 +125,6 @@ export class CavaleteListComponent implements OnInit {
 
     this.carregaCavaletes();
   }
-
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
