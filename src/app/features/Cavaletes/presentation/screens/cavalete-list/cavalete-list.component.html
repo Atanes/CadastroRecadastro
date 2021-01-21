@@ -1,13 +1,17 @@
 <div class="container">
 
   <div fxLayout fxLayoutAlign="space-between center">
-    <h3 class="md-title">{{'titulo_listagem' | transloco}}</h3>
+    <h3 class="md-title">
+      <!-- {{'titulo_listagem' | transloco}} -->
+      Cadastro de Cavaletes
+    </h3>
 
     <button mat-raised-button class="botaoAbreModal" (click)="openModal()">
       <span class="material-icons">
         person_add
       </span>
-      {{'btn_novo' | transloco}}
+      Incluir
+      <!-- {{'btn_novo' | transloco}} -->
     </button>
 
   </div>
@@ -18,10 +22,10 @@
       <mat-label>Filtrar</mat-label>
       <input matInput (keyup)="doFilter($event)">
     </mat-form-field>
-    <div class="bandeiras">
+    <!-- <div class="bandeiras">
       <img src="assets/imagens/flags/ar.png" matTooltip="Español" (click)="changeSiteLanguage('es')">
       <img src="assets/imagens/flags/br.png" matTooltip="Português" (click)="changeSiteLanguage('pt-BR')">
-    </div>
+    </div> -->
 
   </div>
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -32,29 +36,41 @@
     </ng-container>
 
     <ng-container matColumnDef="tipocavalete">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'tipo' | transloco}}</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <!-- {{'tipo' | transloco}} -->
+        Tipo de Cavalete
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.tipocavalete}} </td>
     </ng-container>
 
     <ng-container matColumnDef="datacadastro">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'data_cadastro' | transloco}}</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <!-- {{'data_cadastro' | transloco}} -->
+        Data do cadastro
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.datacadastro | date: 'dd/MM/yyyy'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="dataatualizacao">
-      <th mat-header-cell *matHeaderCellDef>{{'data_alteracao' | transloco}}</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <!-- {{'data_alteracao' | transloco}} -->
+        Data da alteração
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.dataatualizacao | date: 'dd/MM/yyyy'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="acoes">
-      <th class="th-center" mat-header-cell *matHeaderCellDef>{{'acoes' | transloco}}</th>
+      <th class="th-center" mat-header-cell *matHeaderCellDef>
+        <!-- {{'acoes' | transloco }} -->
+        Ações
+      </th>
       <td class="td-center" mat-cell *matCellDef="let element">
         <span class="material-icons botaoEdicaoListas" (click)="selecionaCavalete(element)"
-          matTooltip="{{'icone_edicao' | transloco}}">
+          matTooltip="Editar">
           create
         </span>
         <span class="material-icons botaoExclusaoListas" (click)="excluiCavalete(element)"
-          matTooltip="{{'icone_exclusao' | transloco}}">
+          matTooltip="Excluir">
           delete_sweep
         </span>
       </td>
