@@ -36,11 +36,13 @@ export class CavaleteListComponent implements OnInit {
     private service: CavaleteService,
     public matDialog: MatDialog,
     private t_service: TranslocoService,
-  ) { }
+  ) {
+    this.t_service.setActiveLang('pt-Br');
+  }
 
 
   changeSiteLanguage(language: string): void {
-  this.t_service.setActiveLang(language);
+    this.t_service.setActiveLang(language);
   }
 
   openModal() {

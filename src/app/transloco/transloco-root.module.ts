@@ -29,7 +29,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
         defaultLang: 'pt-BR',
         fallbackLang: 'pt-BR',
         // Remove this option if your application doesn't support changing language in runtime.
-        reRenderOnLangChange: true,
+        // reRenderOnLangChange: true,
         prodMode: environment.production,
       })
     },
