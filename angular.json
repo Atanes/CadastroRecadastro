@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "cadastro-recadastro"
+  "defaultProject": "cadastro-recadastro",
+  "cli": {
+    "analytics": false
+  }
 }
