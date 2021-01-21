@@ -6,5 +6,7 @@
     "acoes": "Comportamiento",
     "btn_novo": "Nuevo",
     "btn_salvar": "Ahorrar",
-    "label_novo_tipo_cavalete": "Nuevo tipo de caballete"
+    "label_novo_tipo_cavalete": "Nuevo tipo de caballete",
+    "icone_exclusao": "Eliminar",
+    "icone_edicao": "Para editar"
 }

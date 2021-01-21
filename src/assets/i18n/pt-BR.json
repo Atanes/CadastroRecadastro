@@ -6,5 +6,7 @@
     "acoes": "Ações",
     "btn_novo": "Novo",
     "btn_salvar": "Salvar",
-    "label_novo_tipo_cavalete": "Novo tipo de cavalete"
+    "label_novo_tipo_cavalete": "Novo tipo de cavalete",
+    "icone_exclusao": "Excluir",
+    "icone_edicao": "Editar"
 }
