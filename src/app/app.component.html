@@ -1,11 +1,8 @@
 <!-- <router-outlet></router-outlet> -->
 <mat-toolbar color="primary">
-  <a class="title" href="/">{{ title }}</a>
+  <a class="title" href="/">SAN5 - Teste APP</a>
 
   <div class="toolbar-spacer"></div>
-
-  <a mat-button [routerLink]="['profile']">Profile</a>
-  <a mat-button [routerLink]="['lazyLoad']">Lazy-load</a>
 
   <button mat-raised-button *ngIf="!loggedIn" (click)="login()">Login</button>
   <button mat-raised-button *ngIf="loggedIn" (click)="logout()">Logout</button>

@@ -10,7 +10,7 @@ import { filter, takeUntil } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Angular 11 - Angular v2 Sample';
+
   isIframe = false;
   loggedIn = false;
   private readonly _destroying$ = new Subject<void>();
