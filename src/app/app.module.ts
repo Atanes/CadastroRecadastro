@@ -26,7 +26,7 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: 'b4c278b7-d94a-4a77-be33-95c642831aa6',
+      clientId: '3b6032fc-4b3c-496f-b49b-df50e97785a9',
       redirectUri: 'https://app-cavaletes.herokuapp.com',
       postLogoutRedirectUri: 'https://app-cavaletes.herokuapp.com'
     },
